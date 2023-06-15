@@ -30,9 +30,12 @@ if numberDigited == '1':
 
     connection.commit()
 
+    print('Cliente registrado com sucesso!')
+
 # READ
 
 if numberDigited == '2':
+
     command = f'SELECT * FROM clients;'
     cursor.execute(command)
     result = cursor.fetchall()
@@ -41,13 +44,14 @@ if numberDigited == '2':
 # UPDATE
 
 if numberDigited == '3':
-    cpf = input('Qual cpf será alterado: ')
+    cpf = input('Qual o cpf será alterado? ')
     newCpf = input('Qual será o novo cpf? ')
 
     command = f'UPDATE clients SET cpf = {newCpf} WHERE cpf = "{cpf}"'
     cursor.execute(command)
     connection.commit()
 
+    print('Cliente atualizado com sucesso!')
 
 # DELETE
 
@@ -56,6 +60,8 @@ if numberDigited == '4':
     command = f'DELETE FROM clients WHERE name = "{name}"'
     cursor.execute(command)
     connection.commit()
+
+    print('Cliente deletado com sucesso!')
 
 cursor.close()
 connection.close()
