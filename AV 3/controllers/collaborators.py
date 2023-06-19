@@ -4,7 +4,7 @@ connection = mysql.connector.connect(
     host='localhost',
     user='root',
     password='root',
-    database='crud_python_prova2'
+    database='Cybersec'
 )
 
 cursor = connection.cursor()
@@ -39,7 +39,11 @@ if numberDigited == '1':
 
 if numberDigited == '2':
 
-    command = f'SELECT * FROM collaborators;'
+    command = '''
+        SELECT collaborators.*, department_name AS department
+        FROM collaborators
+        JOIN departments ON collaborators.idDepartment = departments.id
+    '''
     cursor.execute(command)
     result = cursor.fetchall()
     print(result)
@@ -47,10 +51,11 @@ if numberDigited == '2':
 # UPDATE
 
 if numberDigited == '3':
-    collaborator = input('Qual o gênero do colaborador(a) ')
-    newCollaborator = input('Qual será o novo gênero do colaborador(a) ')
+    cpf = input('Qual o cpf será alterado? ')
+    localToChange = input('Qual campo será alterado? ')
+    newData = input('Digite o novo dado: ')
 
-    command = f'UPDATE collaborators SET gender = "{newCollaborator}" WHERE gender = "{collaborator}"'
+    command = f'UPDATE collaborators SET {localToChange} = "{newData}" WHERE cpf = "{cpf}"'
     cursor.execute(command)
     connection.commit()
 
@@ -59,8 +64,8 @@ if numberDigited == '3':
 # DELETE
 
 if numberDigited == '4':
-    name = input('Qual o nome do colaborador que será deletado? ')
-    command = f'DELETE FROM collaborators WHERE name = "{name}"'
+    cpf = input('Qual o cpf do colaborador que será deletado? ')
+    command = f'DELETE FROM collaborators WHERE cpf = "{cpf}"'
     cursor.execute(command)
     connection.commit()
 

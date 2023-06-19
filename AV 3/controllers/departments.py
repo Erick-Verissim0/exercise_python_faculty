@@ -4,7 +4,7 @@ connection = mysql.connector.connect(
     host='localhost',
     user='root',
     password='root',
-    database='crud_python_prova2'
+    database='Cybersec'
 )
 
 cursor = connection.cursor()
@@ -23,10 +23,9 @@ while numberDigited not in ['1', '2', '3', '4']:
 if numberDigited == '1':
     name = input('Digite o nome do departamento: ')
 
-    command = f'INSERT INTO departments(departments) VALUES ("{name}")'
+    command = f'INSERT INTO departments(department_name) VALUES ("{name}")'
 
     cursor.execute(command)
-
     connection.commit()
 
     print('Departamento registrado com sucesso!')
@@ -46,7 +45,7 @@ if numberDigited == '3':
     department = input('Qual departamento será alterado? ')
     newDepartment = input('Qual será o novo nome do departamento? ')
 
-    command = f'UPDATE departments SET departments = "{newDepartment}" WHERE departments = "{department}"'
+    command = f'UPDATE departments SET department_name = "{newDepartment}" WHERE department_name = "{department}"'
     cursor.execute(command)
     connection.commit()
 
@@ -56,7 +55,7 @@ if numberDigited == '3':
 
 if numberDigited == '4':
     name = input('Digite o nome do departamento que será deletado: ')
-    command = f'DELETE FROM departments WHERE departments = "{name}"'
+    command = f'DELETE FROM departments WHERE department_name = "{name}"'
     cursor.execute(command)
     connection.commit()
 

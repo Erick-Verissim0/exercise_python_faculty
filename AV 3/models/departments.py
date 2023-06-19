@@ -4,7 +4,7 @@ connection = mysql.connector.connect(
     host='localhost',
     user='root',
     password='root',
-    database='crud_python_prova2'
+    database='cybersec'
 )
 
 cursor = connection.cursor()
@@ -12,7 +12,7 @@ cursor = connection.cursor()
 table_departments = '''
     CREATE TABLE departments (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        department_name VARCHAR(100)
+        department_name VARCHAR(100) NOT NULL
     )
 '''
 

@@ -4,7 +4,7 @@ connection = mysql.connector.connect(
     host='localhost',
     user='root',
     password='root',
-    database='crud_python_prova2'
+    database='Cybersec'
 )
 
 cursor = connection.cursor()
@@ -45,9 +45,10 @@ if numberDigited == '2':
 
 if numberDigited == '3':
     cpf = input('Qual o cpf será alterado? ')
-    newCpf = input('Qual será o novo cpf? ')
+    localToChange = input('Qual campo será alterado? ')
+    newData = input('Digite o novo dado: ')
 
-    command = f'UPDATE clients SET cpf = {newCpf} WHERE cpf = "{cpf}"'
+    command = f'UPDATE clients SET {localToChange} = "{newData}" WHERE cpf = "{cpf}"'
     cursor.execute(command)
     connection.commit()
 
@@ -56,8 +57,8 @@ if numberDigited == '3':
 # DELETE
 
 if numberDigited == '4':
-    name = input('Digite o nome do usuário que será deletado: ')
-    command = f'DELETE FROM clients WHERE name = "{name}"'
+    cpf = input('Digite o cpf do usuário que será deletado: ')
+    command = f'DELETE FROM clients WHERE cpf = "{cpf}"'
     cursor.execute(command)
     connection.commit()
 

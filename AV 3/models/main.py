@@ -4,12 +4,12 @@ connection = mysql.connector.connect(
     host='localhost',
     user='root',
     password='root',
-    database='crud_python_prova2'
+    database='base'
 )
 
 cursor = connection.cursor()
 
-databaseName = 'nome_do_banco_de_dados'
+databaseName = 'cybersec'
 cursor.execute(f"CREATE DATABASE {databaseName}")
 
 connection.commit()
